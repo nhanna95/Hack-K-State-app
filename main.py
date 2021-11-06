@@ -4,13 +4,31 @@ from tkinter import ttk
 import random
 
 
+
 def factor():
     def search():
         userInput = entry.get()
         if (userInput == answer):
-            print('yay')
+            print("yay")
+            blankText = Text(window, height = 40, background='#dadde3', borderwidth=0, font = ("Helvetica", 20))
+            blankText.place(x=235,y=0)
+            congratsText = Text(window, height = 1, background = '#dadde3', borderwidth=0, font = ("Helvetica", 20))
+            congratsText.place(x = 250, y = 25)
+            congratsText.delete(1.0, "end")
+            congratsText.insert(1.0, "CONGRATS! You Got the Right Answer!")
+            secondText = Text(window, height = 1, background='#dadde3', borderwidth=0, font = ("Helvetica", 15))
+            secondText.place(x = 250, y = 70)
+            secondText.delete(1.0, "end")
+            secondText.insert(1.0, "Click the button below to go to the next question!")
+            continueBtn = Button(window, text="Next Question", command = factor)
+            continueBtn.place(x = 450, y = 200)
+        else:
+            print("hi")
 
-    blankText = Text(window, height = 10, background='#dadde3', borderwidth=0, font = ("Helvetica", 20))
+    def hint():
+        print("Hi")
+
+    blankText = Text(window, height = 40, background='#dadde3', borderwidth=0, font = ("Helvetica", 20))
     blankText.place(x=235,y=0)
     sectionTitleText = Text(window, height = 1, width = 8, background='#dadde3', borderwidth = 0, font = ("Helvetica", 20))
     sectionTitleText.place(x=250,y=20)
@@ -24,6 +42,12 @@ def factor():
     problemText.place(x = 250, y = 60)
     problemText.delete(1.0, "end")
     problemText.insert(1.0, "Give the Factored Form of this Equation: ")
+    explainText = Text(window, height = 1, background = '#dadde3', borderwidth = 0, font = ("Helvetica", 10))
+    explainText.place(x = 250, y = 90)
+    explainText.delete(1.0, "end")
+    explainText.insert(1.0, "Enter your answer in form (ax+b)(cx+d) or use '-' if b or d is negative")
+    hintBtn = Button(window, text = "Give me a hint", command = hint)
+    hintBtn.place(x = 250, y = 440)
     answer = "("
 
     firstNum = random.randint(1, 10)
@@ -109,7 +133,7 @@ def seq():
     print("hi")
 
 def about():
-    blankText = Text(window, height = 10, background='#dadde3', borderwidth=0, font = ("Helvetica", 20))
+    blankText = Text(window, height = 40, background='#dadde3', borderwidth=0, font = ("Helvetica", 20))
     blankText.place(x=235,y=0)
     sectionTitleText = Text(window, height = 15, width = 61, background='#dadde3', borderwidth = 0, font = ("Helvetica", 12))
     sectionTitleText.place(x = 240, y = 25)
@@ -192,22 +216,22 @@ aboutBtn.place(x = 25, y = 450)
 
 
 englishBtn = Button(window, text="English", command=english)
-englishBtn.place(x = 503, y = 475)
+#englishBtn.place(x = 503, y = 475)
 
 spanishBtn = Button(window, text="Español", command=spanish)
-spanishBtn.place(x = 553, y = 475)
+#spanishBtn.place(x = 553, y = 475)
 
 chineseBtn = Button(window, text="中文", command=chinese)
-chineseBtn.place(x = 605, y = 475)
+#chineseBtn.place(x = 605, y = 475)
 
 vietBtn = Button(window, text="Việt Nam", command=viet)
-vietBtn.place(x = 640, y = 475)
+#vietBtn.place(x = 640, y = 475)
 
 arabicBtn = Button(window, text="العربية", command=arabic)
-arabicBtn.place(x = 700, y = 475)
+#arabicBtn.place(x = 700, y = 475)
 
 russianBtn = Button(window, text="русский", command=russian)
-russianBtn.place(x = 745, y = 475)
+#russianBtn.place(x = 745, y = 475)
 
 
 separator = ttk.Separator(window, orient='vertical')
