@@ -10,7 +10,8 @@ def factor():
         if (userInput == answer):
             print('yay')
 
-    #blankText = Text(window, height = 10)
+    blankText = Text(window, height = 10, background='#dadde3', borderwidth=0, font = ("Helvetica", 20))
+    blankText.place(x=235,y=0)
     sectionTitleText = Text(window, height = 1, width = 8, background='#dadde3', borderwidth = 0, font = ("Helvetica", 20))
     sectionTitleText.place(x=250,y=20)
     entry = Entry(window)
@@ -61,7 +62,6 @@ def factor():
     firstTerm = firstXCoefficient * secondXCoefficient
     middleTerm = (firstXCoefficient * secondNum) + (secondXCoefficient * firstNum)
     lastTerm = firstNum * secondNum
-    print(middleTerm)
     if (firstTerm != 1):
         question = str(firstTerm) + "x^2 "
     else: 
@@ -109,7 +109,25 @@ def seq():
     print("hi")
 
 def about():
-    print("hi")
+    blankText = Text(window, height = 10, background='#dadde3', borderwidth=0, font = ("Helvetica", 20))
+    blankText.place(x=235,y=0)
+    sectionTitleText = Text(window, height = 15, width = 61, background='#dadde3', borderwidth = 0, font = ("Helvetica", 12))
+    sectionTitleText.place(x = 240, y = 25)
+    sectionTitleText.delete(1.0, "end")
+    sectionTitleText.insert(1.0, "About AlgeBRO:"+
+                                "\n " +
+                                "\nOur programs goals are to tutor students in the subject of Algebra. We offer a " + 
+                                "\nvariety of questions surrounding key ideas like solving equations, graphs, and " + 
+                                "\nmultiple functions and allow students to get tips if they got an answer wrong. " + 
+                                "\nWe also have our program translated into multiple languages so students from " +
+                                "\ndifferent countries can also get help in the universal language of math!" +
+                                "\n " +
+                                "\nHow To Use AlgeBRO:" +
+                                "\n " +
+                                "\n1. Select the skill you want to practice on the side bar menu" +
+                                "\n2. Attempt to solve the problems given." +
+                                "\n3. If you are unable to solve it or just need a nudge in the right direction, just click the hint button" +
+                                "\n4. Enjoy learning and improving up on your math skills!")
 
 def english():
     print("hi")
