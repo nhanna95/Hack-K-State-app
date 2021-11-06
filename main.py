@@ -32,6 +32,12 @@ def factor():
         else:
             hint()
 
+    def showSolution():
+        solutionText = Text(window, height = 1, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
+        solutionText.place(x = 250, y = 190)
+        solutionText.delete(1.0, "end")
+        solutionText.insert(1.0, "The solution is " + answer)
+
     
 
     blankText = Text(window, height = 40, background='#dadde3', borderwidth=0, font = ("Helvetica", 20))
@@ -109,6 +115,9 @@ def factor():
     
     question = question + " = 0"
     problemText.insert(2.0, question)
+
+    solutionBtn = Button(window, text = "Give me the Solution", command = showSolution)
+    solutionBtn.place(x = 250, y = 400)
 
 
 def quad():
