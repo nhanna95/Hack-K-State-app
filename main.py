@@ -6,6 +6,12 @@ import random
 
 
 def factor():
+    def hint():
+        hintText = Text(window, height = 1, background = '#dadde3', borderwidth=0, font= ("Helvetica", 15))
+        hintText.place(x = 250, y = 150)
+        hintText.delete(1.0, "end")
+        hintText.insert(1.0, "Hint: Think of what two numbers multiple to the constant")
+        
     def search():
         userInput = entry.get()
         if (userInput == answer):
@@ -23,10 +29,9 @@ def factor():
             continueBtn = Button(window, text="Next Question", command = factor)
             continueBtn.place(x = 450, y = 200)
         else:
-            print("hi")
+            hint()
 
-    def hint():
-        print("Hi")
+    
 
     blankText = Text(window, height = 40, background='#dadde3', borderwidth=0, font = ("Helvetica", 20))
     blankText.place(x=235,y=0)
