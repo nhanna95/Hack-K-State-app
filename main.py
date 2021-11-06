@@ -4,14 +4,16 @@ from tkinter import ttk
 import random
 import math
 
-
+screenNum = 0
 
 def factor():
+    screenNum = 1
     def hint():
-        hintText = Text(window, height = 1, background = '#dadde3', borderwidth=0, font= ("Helvetica", 15))
-        hintText.place(x = 250, y = 150)
-        hintText.delete(1.0, "end")
-        hintText.insert(1.0, "Hint: Think of what two numbers multiple to the constant")
+        if (screenNum == 1):
+            hintText = Text(window, height = 1, background = '#dadde3', borderwidth=0, font= ("Helvetica", 15))
+            hintText.place(x = 250, y = 150)
+            hintText.delete(1.0, "end")
+            hintText.insert(1.0, "Hint: Think of what two numbers multiple to the constant")
         
     def search():
         userInput = entry.get()
@@ -33,10 +35,11 @@ def factor():
             hint()
 
     def showSolution():
-        solutionText = Text(window, height = 1, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
-        solutionText.place(x = 250, y = 190)
-        solutionText.delete(1.0, "end")
-        solutionText.insert(1.0, "The solution is " + answer)
+        if (screenNum == 1):
+            solutionText = Text(window, height = 1, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
+            solutionText.place(x = 250, y = 190)
+            solutionText.delete(1.0, "end")
+            solutionText.insert(1.0, "The solution is " + answer)
 
     
 
@@ -59,7 +62,7 @@ def factor():
     explainText.delete(1.0, "end")
     explainText.insert(1.0, "Enter your answer in form (ax+b)(cx+d) or use '-' if b or d is negative")
     hintBtn = Button(window, text = "Give me a hint", command = hint)
-    hintBtn.place(x = 250, y = 440)
+    hintBtn.place(x = 250, y = 400)
     answer = "("
 
     firstNum = random.randint(1, 10)
@@ -117,10 +120,11 @@ def factor():
     problemText.insert(2.0, question)
 
     solutionBtn = Button(window, text = "Give me the Solution", command = showSolution)
-    solutionBtn.place(x = 250, y = 400)
+    solutionBtn.place(x = 250, y = 440)
 
 
 def quad():
+    screenNum = 2
     def search():
         userInput = entry.get()
         if (userInput == (str(answerPlus) + ", " + str(answerMinus))):
@@ -137,8 +141,24 @@ def quad():
             secondText.insert(1.0, "Click the button below to go to the next question!")
             continueBtn = Button(window, text="Next Question", command = quad)
             continueBtn.place(x = 450, y = 200)
-    
-    blankText = Text(window, height = 10, background = '#dadde3', borderwidth = 0, font = ("Helvetica", 20))
+        else:
+            hint()
+
+    def hint():
+        if (screenNum == 2):
+            hintText = Text(window, height = 1, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
+            hintText.place(x = 250, y = 150)
+            hintText.delete(1.0, "end")
+            hintText.insert(1.0, "Hint: Use the quadratice formula: (-b ± sqrt(b^2 - 4ac))/2a")
+
+    def showSolution():
+        if (screenNum == 2):
+            solutionText = Text(window, height = 1, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
+            solutionText.place(x = 250, y = 190)
+            solutionText.delete(1.0, "end")
+            solutionText.insert(1.0, "The solution is " + str(answerPlus) + ", " + str(answerMinus))
+
+    blankText = Text(window, height = 400, background = '#dadde3', borderwidth = 0, font = ("Helvetica", 20))
     blankText.place(x = 235, y = 0)
 
     sectionTitleText = Text(window, height = 1, width = 8, background='#dadde3', borderwidth = 0, font = ("Helvetica", 20))
@@ -158,6 +178,9 @@ def quad():
                             "\nIf your answer is an integer, type .0 after the integer. If you answer is a terminating decimal,"+
                             "\nenter your answer until the decimal terminates. Enter the higher solution first. Equation:" +
                             "\n")
+
+    hintBtn = Button(window, text = "Give me a hint", command = hint)
+    hintBtn.place(x = 250, y = 400)
 
     a = random.randint(1, 10)
     b = random.randint(1, 10)
@@ -182,6 +205,9 @@ def quad():
     answerPlus = round(((-b + math.sqrt(b*b - 4*a*c))/(2*a)), 3)
     answerMinus = round(((-b - math.sqrt(b*b - 4*a*c))/(2*a)), 3)
     print(str(answerPlus) + ", " + str(answerMinus))
+
+    solutionBtn = Button(window, text = "Give me the solution", command = showSolution)
+    solutionBtn.place(x = 250, y = 440)
 
 def square():
     print("hi")
