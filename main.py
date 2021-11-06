@@ -2,6 +2,7 @@ from tkinter import *
 import matplotlib.pyplot as plt
 from tkinter import ttk
 import random
+import math
 
 
 
@@ -111,7 +112,47 @@ def factor():
 
 
 def quad():
-    print("hi")
+    def search():
+        userInput = entry.get()
+        if (userInput == (str(answerPlus) + ", " + str(answerMinus))):
+            print("yay")
+    
+    blankText = Text(window, height = 10, background = '#dadde3', borderwidth = 0, font = ("Helvetica", 20))
+    blankText.place(x = 235, y = 0)
+
+    sectionTitleText = Text(window, height = 1, width = 8, background='#dadde3', borderwidth = 0, font = ("Helvetica", 20))
+    sectionTitleText.place(x = 250,y = 20)
+
+    entry = Entry(window)
+    entry.place(x = 550, y = 445)
+    submitBtn = Button(window, text = "Submit", command = search)
+    submitBtn.place(x = 700, y = 440)
+
+    sectionTitleText.delete(1.0, "end")
+    sectionTitleText.insert(1.0, "Quadratic Formula")
+    problemText = Text(window, height = 4, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 12))
+    problemText.place(x = 250, y = 60)
+    problemText.delete(1.0, "end")
+    problemText.insert(1.0, "Find the solutions to the equation, rounding your answer to the nearest three decimal points." + 
+                            "\nIf your answer is an integer, type .0 after the integer. If you answer is a terminating decimal,"+
+                            "\nenter your answer until the decimal terminates. Enter the higher solution first. Equation:" +
+                            "\n")
+
+    a = random.randint(1, 10)
+    b = random.randint(1, 10)
+    c = random.randint(1, 10)
+
+    while((b*b - 4*a*c) < 0):
+        a = random.randint(1, 10)
+        b = random.randint(1, 10)
+        c = random.randint(1, 10)
+    
+    question = str(a) + "x^2 + " + str(b) + " x + " + str(c) 
+    problemText.insert(4.0, question)
+
+    answerPlus = round(((-b + math.sqrt(b*b - 4*a*c))/(2*a)), 3)
+    answerMinus = round(((-b - math.sqrt(b*b - 4*a*c))/(2*a)), 3)
+    print(str(answerPlus) + ", " + str(answerMinus))
 
 def square():
     print("hi")
