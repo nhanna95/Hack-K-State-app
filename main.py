@@ -15,7 +15,81 @@ from tkinter import ttk
 
 
 def factor():
-    print("hi")
+    def search():
+        userInput = entry.get()
+        if (userInput == answer):
+            print('yay')
+
+
+    sectionTitleText = Text(window, height = 1, width = 8, background='#dadde3', borderwidth = 0, font = ("Helvetica", 20))
+    sectionTitleText.place(x=250,y=20)
+    entry = Entry(window)
+    entry.place(x = 550, y = 445)
+    submitBtn = Button(window, text="Submit", command = search)
+    submitBtn.place(x = 700, y = 440)
+    sectionTitleText.delete(1.0, "end")
+    sectionTitleText.insert(1.0, "Factoring")
+    problemText = Text(window, height = 1,  background='#dadde3', borderwidth = 0, font = ("Helvetica", 15))
+    problemText.place(x = 250, y = 60)
+    problemText.delete(1.0, "end")
+    problemText.insert(1.0, "Give the Factored Form of this Equation: ")
+    answer = "("
+
+    firstNum = random.randint(1, 10)
+    secondNum = random.randint(1, 10)
+    if (random.randint(0,1) == 1):
+        firstXCoefficient = random.randint(2, 5)
+        answer = answer + str(firstXCoefficient) + "x"
+    else:
+        firstXCoefficient = 1
+        answer = answer + "x"
+
+    if (random.randint(0, 1) == 1):
+        firstOperator = "+"
+        answer = answer + "+" + str(firstNum) + ")("
+    else:
+        firstOperator = "-"
+        answer = answer + "-" + str(firstNum) + ")("
+        firstNum = firstNum * -1
+
+    if (random.randint(0,1) == 1):
+        secondXCoefficient = random.randint(2, 5)
+        answer = answer + str(secondXCoefficient) + "x"
+    else:
+        secondXCoefficient = 1
+        answer = answer + "x"
+    
+    if (random.randint(0,1) == 1):
+        secondOperator = "+"
+        answer = answer + "+" + str(secondNum) + ")"
+    else:
+        secondOperator = "-"
+        answer = answer + "-" + str(secondNum) + ")"
+        secondNum = secondNum * -1
+
+    print(answer)
+    firstTerm = firstXCoefficient * secondXCoefficient
+    middleTerm = (firstXCoefficient * secondNum) + (secondXCoefficient * firstNum)
+    lastTerm = firstNum * secondNum
+    print(middleTerm)
+    if (firstTerm != 1):
+        question = str(firstTerm) + "x "
+    else: 
+        question = "x "
+    if (middleTerm < 0):
+        question = question + "- " + str(abs(middleTerm))
+    elif (middleTerm > 0):
+        question = question + "+ " + str(middleTerm)
+    if (lastTerm < 0):
+        question = question + " - " + str(abs(lastTerm))
+    else:
+        question = question + " + " + str(lastTerm)
+
+    print(question)
+    
+    question = question + " = 0"
+    problemText.insert(2.0, question)
+
 
 def quad():
     print("hi")
