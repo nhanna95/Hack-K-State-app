@@ -116,6 +116,18 @@ def quad():
         userInput = entry.get()
         if (userInput == (str(answerPlus) + ", " + str(answerMinus))):
             print("yay")
+            blankText = Text(window, height = 40, background='#dadde3', borderwidth=0, font = ("Helvetica", 20))
+            blankText.place(x=235,y=0)
+            congratsText = Text(window, height = 1, background = '#dadde3', borderwidth=0, font = ("Helvetica", 20))
+            congratsText.place(x = 250, y = 25)
+            congratsText.delete(1.0, "end")
+            congratsText.insert(1.0, "CONGRATS! You Got the Right Answer!")
+            secondText = Text(window, height = 1, background='#dadde3', borderwidth=0, font = ("Helvetica", 15))
+            secondText.place(x = 250, y = 70)
+            secondText.delete(1.0, "end")
+            secondText.insert(1.0, "Click the button below to go to the next question!")
+            continueBtn = Button(window, text="Next Question", command = quad)
+            continueBtn.place(x = 450, y = 200)
     
     blankText = Text(window, height = 10, background = '#dadde3', borderwidth = 0, font = ("Helvetica", 20))
     blankText.place(x = 235, y = 0)
@@ -147,7 +159,15 @@ def quad():
         b = random.randint(1, 10)
         c = random.randint(1, 10)
     
-    question = str(a) + "x^2 + " + str(b) + " x + " + str(c) 
+    if (a == 1 and b == 1):
+        question = "x^2 + x + " + str(c)
+    elif(a == 1 and b != 1):
+        question = "x^2 + " + str(b) + "x + " + str(c)
+    elif(a != 1 and b == 1):
+        question = str(a) + "x^2 + x + " + str(c)
+    else:
+        question = str(a) + "x^2 + " + str(b) + "x + " + str(c)
+
     problemText.insert(4.0, question)
 
     answerPlus = round(((-b + math.sqrt(b*b - 4*a*c))/(2*a)), 3)
@@ -233,7 +253,7 @@ factorBtn.place(x = 25, y = 86)
 quadBtn = Button(window, text="Quadratic Formula", command=quad)
 quadBtn.place(x = 25, y = 122)
 
-squareBtn = Button(window, text="Completeing the Square", command=square)
+squareBtn = Button(window, text="Completing the Square", command=square)
 squareBtn.place(x = 25, y = 159)
 
 solvingBtn = Button(window, text="Solving Single Variable Equations", command=solving)
