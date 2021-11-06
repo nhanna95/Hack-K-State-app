@@ -1,18 +1,8 @@
-#Factoring
-#Given a graph find the equation
-#Quadratic formula
-#Line of best fit
-#Systems of Equations
-#Solving single variable equations
-#Inequalities
-#Completing the Squre
-#Sequences
-#Exponetials
 import tkinter as tk 
 from tkinter import *
 import matplotlib.pyplot as plt
 from tkinter import ttk
-
+import random
 
 def factor():
     def search():
