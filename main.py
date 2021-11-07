@@ -6,8 +6,11 @@ import math
 
 screenNum = 0
 
+#first function if the user decides to practice factoring
 def factor():
     screenNum = 1
+    
+    #displays a hint if the user requests
     def hint():
         if (screenNum == 1):
             hintText = Text(window, height = 1, background = '#dadde3', borderwidth=0, font= ("Helvetica", 15))
@@ -15,6 +18,7 @@ def factor():
             hintText.delete(1.0, "end")
             hintText.insert(1.0, "Hint: Think of what two numbers multiple to the constant")
         
+    #compares user's answer with the calculated answer, then offers another question. if the user gets the question wrong, offers the hint
     def search():
         userInput = entry.get()
         if (userInput == answer):
@@ -34,6 +38,7 @@ def factor():
         else:
             hint()
 
+    #shows the solution
     def showSolution():
         if (screenNum == 1):
             solutionText = Text(window, height = 1, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
@@ -629,7 +634,81 @@ def expon():
     solutionBtn.place(x = 250, y = 440)
 
 def seq():
-    print("hi")
+    screenNum = 10
+    def search():
+        userInput = entry.get()
+        if (int(userInput) == commonChange):
+            print("yay")
+            blankText = Text(window, height = 40, background='#dadde3', borderwidth=0, font = ("Helvetica", 20))
+            blankText.place(x=235,y=0)
+            congratsText = Text(window, height = 1, background = '#dadde3', borderwidth=0, font = ("Helvetica", 20))
+            congratsText.place(x = 250, y = 25)
+            congratsText.delete(1.0, "end")
+            congratsText.insert(1.0, "CONGRATS! You Got the Right Answer!")
+            secondText = Text(window, height = 1, background='#dadde3', borderwidth=0, font = ("Helvetica", 15))
+            secondText.place(x = 250, y = 70)
+            secondText.delete(1.0, "end")
+            secondText.insert(1.0, "Click the button below to go to the next question!")
+            continueBtn = Button(window, text="Next Question", command = seq)
+            continueBtn.place(x = 450, y = 200)
+        else:
+            hint()
+    
+    def hint():
+        if (screenNum == 10):
+            hintText = Text(window, height = 2, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
+            hintText.place(x = 250, y = 150)
+            hintText.delete(1.0, "end")
+            hintText.insert(1.0, "First, figure out if the sequence is geometric or arithmetic. If it's geometric, the numbers will multiply by a common number."+
+                                 "\nIf the sequence is arithmetic, it will grow by adding the same number")
+
+    def showSolution():
+        if (screenNum == 9):
+            solutionText = Text(window, height = 1, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
+            solutionText.place(x = 250, y = 190)
+            solutionText.delete(1.0, "end")
+            solutionText.insert(1.0, "The solution is " + commonChange)
+
+    blankText = Text(window, height = 400, background = '#dadde3', borderwidth = 0, font = ("Helvetica", 20))
+    blankText.place(x = 235, y = 0)
+
+    sectionTitleText = Text(window, height = 1, width = 8, background='#dadde3', borderwidth = 0, font = ("Helvetica", 20))
+    sectionTitleText.place(x = 250,y = 20)
+
+    entry = Entry(window)
+    entry.place(x = 550, y = 445)
+    submitBtn = Button(window, text = "Submit", command = search)
+    submitBtn.place(x = 700, y = 440)
+
+    sectionTitleText.delete(1.0, "end")
+    sectionTitleText.insert(1.0, "Sequence Practice")
+    problemText = Text(window, height = 3, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 12))
+    problemText.place(x = 250, y = 60)
+    problemText.delete(1.0, "end")
+    problemText.insert(1.0, "You will be given a set of three numbers. If the sequence is geometric, provide the common ratio." +
+                            "\nIf the sequence is arithmetic provide the common difference. Your sequence is:"+
+                            "\n")
+
+    hintBtn = Button(window, text = "Give me a hint", command = hint)
+    hintBtn.place(x = 250, y = 400)
+
+    decideSequence = random.randint(1, 2)
+    commonChange = random.randint(1, 10)
+    firstTerm = random.randint(1, 10)
+
+    question = " "
+
+    if (decideSequence == 1):
+        question = str(firstTerm) + ", " + str((firstTerm+commonChange)) + ", " + str((firstTerm+commonChange+commonChange))
+        print(commonChange)
+    else:
+        question = str(firstTerm) + ", " + str((firstTerm*commonChange)) + ", " + str((firstTerm*commonChange*commonChange))
+        print(commonChange)
+
+    problemText.insert(3.0, question)
+
+    solutionBtn = Button(window, text = "Give me the solution", command = showSolution)
+    solutionBtn.place(x = 250, y = 440)
 
 def about():
     blankText = Text(window, height = 40, background='#dadde3', borderwidth=0, font = ("Helvetica", 20))
