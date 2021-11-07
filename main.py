@@ -267,7 +267,7 @@ def solving():
     explainText = Text(window, height = 1, background = '#dadde3', borderwidth = 0, font = ("Helvetica", 10))
     explainText.place(x = 250, y = 90)
     explainText.delete(1.0, "end")
-    explainText.insert(1.0, "Enter your answer to a maximum of three digits. If it's an integer, add .0")
+    explainText.insert(1.0, "Enter your answer to a maximum of three digits")
     hintBtn = Button(window, text = "Give me a hint", command = hint)
     hintBtn.place(x = 250, y = 400)
     solutionBtn = Button(window, text = "Give me the Solution", command = showSolution)
@@ -329,7 +329,137 @@ def solving():
     problemText.insert(6.0, question)
 
 def system():
-    print("hi")
+    def hint():
+            hintText = Text(window, height = 1, background = '#dadde3', borderwidth=0, font= ("Helvetica", 15))
+            hintText.place(x = 250, y = 150)
+            hintText.delete(1.0, "end")
+            hintText.insert(1.0, "Hint: Munipulate the Equations so you are able to cancel one of the variables")
+        
+    def search():
+        userInput = entry.get()
+        print(userInput)
+        print(answer)
+        if (str(userInput) == str(answer)):
+            print("yay")
+            blankText = Text(window, height = 40, background='#dadde3', borderwidth=0, font = ("Helvetica", 20))
+            blankText.place(x=235,y=0)
+            congratsText = Text(window, height = 1, background = '#dadde3', borderwidth=0, font = ("Helvetica", 20))
+            congratsText.place(x = 250, y = 25)
+            congratsText.delete(1.0, "end")
+            congratsText.insert(1.0, "CONGRATS! You Got the Right Answer!")
+            secondText = Text(window, height = 1, background='#dadde3', borderwidth=0, font = ("Helvetica", 15))
+            secondText.place(x = 250, y = 70)
+            secondText.delete(1.0, "end")
+            secondText.insert(1.0, "Click the button below to go to the next question!")
+            continueBtn = Button(window, text="Next Question", command = system)
+            continueBtn.place(x = 450, y = 200)
+        else:
+            hint()
+
+    def showSolution():
+        solutionText = Text(window, height = 1, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
+        solutionText.place(x = 250, y = 190)
+        solutionText.delete(1.0, "end")
+        solutionText.insert(1.0, "The solution is " + str(answer))
+
+    blankText = Text(window, height = 40, background='#dadde3', borderwidth=0, font = ("Helvetica", 20))
+    blankText.place(x=235,y=0)
+    sectionTitleText = Text(window, height = 1, background='#dadde3', borderwidth = 0, font = ("Helvetica", 20))
+    sectionTitleText.place(x=250,y=20)
+    entry = Entry(window)
+    entry.place(x = 550, y = 445)
+    submitBtn = Button(window, text="Submit", command = search)
+    submitBtn.place(x = 700, y = 440)
+    sectionTitleText.delete(1.0, "end")
+    sectionTitleText.insert(1.0, "Solving a System of Equations")
+    problemText = Text(window, height = 1,  background='#dadde3', borderwidth = 0, font = ("Helvetica", 12))
+    problemText.place(x = 250, y = 60)
+    problemText.delete(1.0, "end")
+    problemText.insert(1.0, "Solve for the value of x and y in these equations: ")
+    explainText = Text(window, height = 1, background = '#dadde3', borderwidth = 0, font = ("Helvetica", 10))
+    explainText.place(x = 250, y = 90)
+    explainText.delete(1.0, "end")
+    explainText.insert(1.0, "Enter your answer in form x,y with rounded to a maximum of 3 digits")
+    hintBtn = Button(window, text = "Give me a hint", command = hint)
+    hintBtn.place(x = 250, y = 400)
+    solutionBtn = Button(window, text = "Give me the Solution", command = showSolution)
+    solutionBtn.place(x = 250, y = 440)
+    skipBtn = Button(window, text = "Skip Question", command = system)
+    skipBtn.place(x = 700, y = 470)
+
+    if (random.randint(0,1) == 1):
+        a = random.randint(-10, -1)
+    else:
+        a = random.randint(1, 10)
+    if (random.randint(0,1) == 1):
+        b = random.randint(-10, -1)
+    else:
+        b = random.randint(-10, -1)
+    if (random.randint(0,1) == 1):
+        c = random.randint(-10, -1)
+    else:
+        c = random.randint(1, 10)
+    if (random.randint(0,1) == 1):
+        d = random.randint(-10, -1)
+    else:
+        d = random.randint(1, 10)
+    if (random.randint(0,1) == 1):
+        e = random.randint(-10, -1)
+    else:
+        e = random.randint(1, 10)
+    if (random.randint(0,1) == 1):
+        f = random.randint(-10, -1)
+    else:
+        f = random.randint(1, 10)
+
+    while(a == d or b == e or c == f):
+        if (random.randint(0,1) == 1):
+            a = random.randint(-10, -1)
+        else:
+            a = random.randint(1, 10)
+        if (random.randint(0,1) == 1):
+            b = random.randint(-10, -1)
+        else:
+            b = random.randint(-10, -1)
+        if (random.randint(0,1) == 1):
+            c = random.randint(-10, -1)
+        else:
+            c = random.randint(1, 10)
+        if (random.randint(0,1) == 1):
+            d = random.randint(-10, -1)
+        else:
+            d = random.randint(1, 10)
+        if (random.randint(0,1) == 1):
+            e = random.randint(-10, -1)
+        else:
+            e = random.randint(1, 10)
+        if (random.randint(0,1) == 1):
+            f = random.randint(-10, -1)
+        else:
+            f = random.randint(1, 10)
+
+    equationOne = str(a) + "x "
+    if (b < 0):
+        equationOne = equationOne + "- " + str(abs(b)) + "y = " + str(c)
+    else:
+        equationOne = equationOne + "+ " + str(b) + "y = " + str(c)
+
+    equationTwo = str(d) + "x " 
+    if (e < 0):
+        equationTwo = equationTwo + "- " + str(abs(e)) + "y = " + str(f)
+    else:
+        equationTwo = equationTwo + "+ " + str(e) + "y = " + str(f)
+
+    problemText.insert(6.0, equationOne + ", " + equationTwo)
+
+    print(equationOne)
+    print(equationTwo)
+
+
+    x = (e * c - b * f) / (a * e - b * d)
+    y = (d * c - a * f) / (b * d - a * e)
+    answer = str(x) + ", " + str(y)
+    print(answer)
 
 def inequal():
     print("hi")
@@ -426,81 +556,7 @@ def expon():
     solutionBtn.place(x = 250, y = 440)
 
 def seq():
-    screenNum = 10
-    def search():
-        userInput = entry.get()
-        if (int(userInput) == commonChange):
-            print("yay")
-            blankText = Text(window, height = 40, background='#dadde3', borderwidth=0, font = ("Helvetica", 20))
-            blankText.place(x=235,y=0)
-            congratsText = Text(window, height = 1, background = '#dadde3', borderwidth=0, font = ("Helvetica", 20))
-            congratsText.place(x = 250, y = 25)
-            congratsText.delete(1.0, "end")
-            congratsText.insert(1.0, "CONGRATS! You Got the Right Answer!")
-            secondText = Text(window, height = 1, background='#dadde3', borderwidth=0, font = ("Helvetica", 15))
-            secondText.place(x = 250, y = 70)
-            secondText.delete(1.0, "end")
-            secondText.insert(1.0, "Click the button below to go to the next question!")
-            continueBtn = Button(window, text="Next Question", command = seq)
-            continueBtn.place(x = 450, y = 200)
-        else:
-            hint()
-    
-    def hint():
-        if (screenNum == 10):
-            hintText = Text(window, height = 2, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
-            hintText.place(x = 250, y = 150)
-            hintText.delete(1.0, "end")
-            hintText.insert(1.0, "First, figure out if the sequence is geometric or arithmetic. If it's geometric, the numbers will multiply by a common number."+
-                                 "\nIf the sequence is arithmetic, it will grow by adding the same number")
-
-    def showSolution():
-        if (screenNum == 9):
-            solutionText = Text(window, height = 1, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
-            solutionText.place(x = 250, y = 190)
-            solutionText.delete(1.0, "end")
-            solutionText.insert(1.0, "The solution is " + commonChange)
-
-    blankText = Text(window, height = 400, background = '#dadde3', borderwidth = 0, font = ("Helvetica", 20))
-    blankText.place(x = 235, y = 0)
-
-    sectionTitleText = Text(window, height = 1, width = 8, background='#dadde3', borderwidth = 0, font = ("Helvetica", 20))
-    sectionTitleText.place(x = 250,y = 20)
-
-    entry = Entry(window)
-    entry.place(x = 550, y = 445)
-    submitBtn = Button(window, text = "Submit", command = search)
-    submitBtn.place(x = 700, y = 440)
-
-    sectionTitleText.delete(1.0, "end")
-    sectionTitleText.insert(1.0, "Sequence Practice")
-    problemText = Text(window, height = 3, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 12))
-    problemText.place(x = 250, y = 60)
-    problemText.delete(1.0, "end")
-    problemText.insert(1.0, "You will be given a set of three numbers. If the sequence is geometric, provide the common ratio." +
-                            "\nIf the sequence is arithmetic provide the common difference. Your sequence is:"+
-                            "\n")
-
-    hintBtn = Button(window, text = "Give me a hint", command = hint)
-    hintBtn.place(x = 250, y = 400)
-
-    decideSequence = random.randint(1, 2)
-    commonChange = random.randint(1, 10)
-    firstTerm = random.randint(1, 10)
-
-    question = " "
-
-    if (decideSequence == 1):
-        question = str(firstTerm) + ", " + str((firstTerm+commonChange)) + ", " + str((firstTerm+commonChange+commonChange))
-        print(commonChange)
-    else:
-        question = str(firstTerm) + ", " + str((firstTerm*commonChange)) + ", " + str((firstTerm*commonChange*commonChange))
-        print(commonChange)
-
-    problemText.insert(3.0, question)
-
-    solutionBtn = Button(window, text = "Give me the solution", command = showSolution)
-    solutionBtn.place(x = 250, y = 440)
+    print("hi")
 
 def about():
     blankText = Text(window, height = 40, background='#dadde3', borderwidth=0, font = ("Helvetica", 20))
