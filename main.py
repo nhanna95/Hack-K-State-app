@@ -663,11 +663,11 @@ def seq():
                                  "\nIf the sequence is arithmetic, it will grow by adding the same number")
 
     def showSolution():
-        if (screenNum == 9):
+        if (screenNum == 10):
             solutionText = Text(window, height = 1, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
             solutionText.place(x = 250, y = 190)
             solutionText.delete(1.0, "end")
-            solutionText.insert(1.0, "The solution is " + commonChange)
+            solutionText.insert(1.0, "The solution is " + str(commonChange))
 
     blankText = Text(window, height = 400, background = '#dadde3', borderwidth = 0, font = ("Helvetica", 20))
     blankText.place(x = 235, y = 0)
