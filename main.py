@@ -149,7 +149,7 @@ def quad():
             hintText = Text(window, height = 1, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
             hintText.place(x = 250, y = 150)
             hintText.delete(1.0, "end")
-            hintText.insert(1.0, "Hint: Use the quadratice formula: (-b ± sqrt(b^2 - 4ac))/2a")
+            hintText.insert(1.0, "Hint: Use the quadratic formula: (-b ± sqrt(b^2 - 4ac))/2a")
 
     def showSolution():
         if (screenNum == 2):
@@ -228,7 +228,89 @@ def best():
     print("hi")
 
 def expon():
-    print("hi")
+    screenNum = 9
+    def search():
+        userInput = entry.get()
+        if (userInput == answer):
+            print("yay")
+            blankText = Text(window, height = 40, background='#dadde3', borderwidth=0, font = ("Helvetica", 20))
+            blankText.place(x=235,y=0)
+            congratsText = Text(window, height = 1, background = '#dadde3', borderwidth=0, font = ("Helvetica", 20))
+            congratsText.place(x = 250, y = 25)
+            congratsText.delete(1.0, "end")
+            congratsText.insert(1.0, "CONGRATS! You Got the Right Answer!")
+            secondText = Text(window, height = 1, background='#dadde3', borderwidth=0, font = ("Helvetica", 15))
+            secondText.place(x = 250, y = 70)
+            secondText.delete(1.0, "end")
+            secondText.insert(1.0, "Click the button below to go to the next question!")
+            continueBtn = Button(window, text="Next Question", command = quad)
+            continueBtn.place(x = 450, y = 200)
+        else:
+            hint()
+    
+    def hint():
+        if (screenNum == 9):
+            hintText = Text(window, height = 2, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
+            hintText.place(x = 250, y = 150)
+            hintText.delete(1.0, "end")
+            hintText.insert(1.0, "If you have to multiply, add the exponents, if you have to divide, subtract the exponents."+
+                                 "\nIf you have the power to the power, multiply the exponents")
+
+    def showSolution():
+        if (screenNum == 9):
+            solutionText = Text(window, height = 1, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
+            solutionText.place(x = 250, y = 190)
+            solutionText.delete(1.0, "end")
+            solutionText.insert(1.0, "The solution is " + answer)
+
+    blankText = Text(window, height = 400, background = '#dadde3', borderwidth = 0, font = ("Helvetica", 20))
+    blankText.place(x = 235, y = 0)
+
+    sectionTitleText = Text(window, height = 1, width = 8, background='#dadde3', borderwidth = 0, font = ("Helvetica", 20))
+    sectionTitleText.place(x = 250,y = 20)
+
+    entry = Entry(window)
+    entry.place(x = 550, y = 445)
+    submitBtn = Button(window, text = "Submit", command = search)
+    submitBtn.place(x = 700, y = 440)
+
+    sectionTitleText.delete(1.0, "end")
+    sectionTitleText.insert(1.0, "Exponent Practice")
+    problemText = Text(window, height = 4, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 12))
+    problemText.place(x = 250, y = 60)
+    problemText.delete(1.0, "end")
+    problemText.insert(1.0, "You will be given either a multiplication of exponents with the same base, division of exponents" +
+                            "\nwith the same base, or a power to a power. Your task is to solve it and show the equation in the" +
+                            "\nsimplest form your equation is: "+
+                            "\n")
+
+    hintBtn = Button(window, text = "Give me a hint", command = hint)
+    hintBtn.place(x = 250, y = 400)
+
+    decideOperation = random.randint(1, 3)
+    firstExponent = random.randint(1, 10)
+    secondExponent = random.randint(1, 10)
+
+    question = " "
+    answer = " "
+
+    if (decideOperation == 1):
+        question = "x^" + str(firstExponent) + "*x^" + str(secondExponent)
+        answer = "x^" + str((firstExponent + secondExponent))
+        print(answer)
+    elif (decideOperation == 2):
+        question = "x^" + str(firstExponent) + "/x^" + str(secondExponent)
+        answer = "x^" + str((firstExponent - secondExponent))
+        print(answer)
+    else:
+        question = "(x^" + str(firstExponent) + ")^" + str(secondExponent)
+        answer = "x^" + str((firstExponent * secondExponent))
+        print(answer)
+
+    problemText.insert(4.0, question)
+
+    solutionBtn = Button(window, text = "Give me the solution", command = showSolution)
+    solutionBtn.place(x = 250, y = 440)
 
 def seq():
     print("hi")
