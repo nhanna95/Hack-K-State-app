@@ -267,7 +267,7 @@ def solving():
     explainText = Text(window, height = 1, background = '#dadde3', borderwidth = 0, font = ("Helvetica", 10))
     explainText.place(x = 250, y = 90)
     explainText.delete(1.0, "end")
-    explainText.insert(1.0, "Enter your answer to a maximum of three digits")
+    explainText.insert(1.0, "Enter your answer to a maximum of three digits. If it's an integer, add .0")
     hintBtn = Button(window, text = "Give me a hint", command = hint)
     hintBtn.place(x = 250, y = 400)
     solutionBtn = Button(window, text = "Give me the Solution", command = showSolution)
