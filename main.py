@@ -765,5 +765,10 @@ sectionTitleText.insert(1.0, "About AlgeBRO:"+
                             "\n3. If you are unable to solve it or just need a nudge in the right direction, just click the hint button" +
                             "\n4. Enjoy learning and improving up on your math skills!")
 
+logoText = Text(window, height = 1, width = 7, background = '#dadde3', borderwidth=0, font = ("Helvetica", 20), fg='#2f91b5')
+logoText.place(x = 10, y = 10)
+logoText.delete(1.0, "end")
+logoText.insert(1.0, "AlgeBRO")
 
 window.mainloop()
+
