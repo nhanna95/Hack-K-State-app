@@ -1,24 +1,15 @@
 from tkinter import *
-import matplotlib.pyplot as plt
 from tkinter import ttk
 import random
 import math
 
-screenNum = 0
-
-#first function if the user decides to practice factoring
 def factor():
-    screenNum = 1
-    
-    #displays a hint if the user requests
     def hint():
-        if (screenNum == 1):
-            hintText = Text(window, height = 1, background = '#dadde3', borderwidth=0, font= ("Helvetica", 15))
-            hintText.place(x = 250, y = 150)
-            hintText.delete(1.0, "end")
-            hintText.insert(1.0, "Hint: Think of what two numbers multiple to the constant")
+        hintText = Text(window, height = 1, background = '#dadde3', borderwidth = 0, font= ("Helvetica", 15))
+        hintText.place(x = 250, y = 150)
+        hintText.delete(1.0, "end")
+        hintText.insert(1.0, "Hint: Think of what two numbers multiple to the constant")
         
-    #compares user's answer with the calculated answer, then offers another question. if the user gets the question wrong, offers the hint
     def search():
         userInput = entry.get()
         if (userInput == answer):
@@ -38,13 +29,11 @@ def factor():
         else:
             hint()
 
-    #shows the solution
     def showSolution():
-        if (screenNum == 1):
-            solutionText = Text(window, height = 1, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
-            solutionText.place(x = 250, y = 190)
-            solutionText.delete(1.0, "end")
-            solutionText.insert(1.0, "The solution is " + answer)
+        solutionText = Text(window, height = 1, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
+        solutionText.place(x = 250, y = 190)
+        solutionText.delete(1.0, "end")
+        solutionText.insert(1.0, "The solution is " + answer)
 
     
 
@@ -126,7 +115,7 @@ def factor():
     question = question + " = 0"
     problemText.insert(2.0, question)
 
-    solutionBtn = Button(window, text = "Give me the Solution", command = showSolution)
+    solutionBtn = Button(window, text = "Give me the solution", command = showSolution)
     solutionBtn.place(x = 250, y = 440)
 
 
@@ -244,20 +233,20 @@ def square():
             hintText = Text(window, height = 2, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
             hintText.place(x = 250, y = 150)
             hintText.delete(1.0, "end")
-            hintText.insert(2.0, "Hint: add (b/2)^2 to both sides (right side is 0), factor the left side, subtract the "+
-                                 "\nright side from both sides.")
+            hintText.insert(2.0, "Hint: add (b/2)^2 to both sides (right side is 0), factor \nthe left side, subtract the "+
+                                 "right side from both sides.")
 
     def showSolution():
         if (screenNum == 3):
             solutionText = Text(window, height = 1, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
-            solutionText.place(x = 250, y = 190)
+            solutionText.place(x = 250, y = 200)
             solutionText.delete(1.0, "end")
             solutionText.insert(1.0, "The solution is " + answer)
 
     blankText = Text(window, height = 400, background = '#dadde3', borderwidth = 0, font = ("Helvetica", 20))
     blankText.place(x = 235, y = 0)
 
-    sectionTitleText = Text(window, height = 1, width = 8, background='#dadde3', borderwidth = 0, font = ("Helvetica", 20))
+    sectionTitleText = Text(window, height = 1, background='#dadde3', borderwidth = 0, font = ("Helvetica", 20))
     sectionTitleText.place(x = 250,y = 20)
 
     entry = Entry(window)
@@ -348,7 +337,7 @@ def solving():
     explainText.insert(1.0, "Enter your answer to a maximum of three digits")
     hintBtn = Button(window, text = "Give me a hint", command = hint)
     hintBtn.place(x = 250, y = 400)
-    solutionBtn = Button(window, text = "Give me the Solution", command = showSolution)
+    solutionBtn = Button(window, text = "Give me the solution", command = showSolution)
     solutionBtn.place(x = 250, y = 440)
     skipBtn = Button(window, text = "Skip Question", command = solving)
     skipBtn.place(x = 700, y = 470)
@@ -408,10 +397,10 @@ def solving():
 
 def system():
     def hint():
-            hintText = Text(window, height = 1, background = '#dadde3', borderwidth=0, font= ("Helvetica", 15))
+            hintText = Text(window, height = 2, background = '#dadde3', borderwidth=0, font= ("Helvetica", 15))
             hintText.place(x = 250, y = 150)
             hintText.delete(1.0, "end")
-            hintText.insert(1.0, "Hint: Munipulate the Equations so you are able to cancel one of the variables")
+            hintText.insert(1.0, "Hint: Munipulate the Equations so you are \nable to cancel one of the variables")
         
     def search():
         userInput = entry.get()
@@ -436,7 +425,7 @@ def system():
 
     def showSolution():
         solutionText = Text(window, height = 1, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
-        solutionText.place(x = 250, y = 190)
+        solutionText.place(x = 250, y = 205)
         solutionText.delete(1.0, "end")
         solutionText.insert(1.0, "The solution is " + str(answer))
 
@@ -460,7 +449,7 @@ def system():
     explainText.insert(1.0, "Enter your answer in form x,y with rounded to a maximum of 3 digits")
     hintBtn = Button(window, text = "Give me a hint", command = hint)
     hintBtn.place(x = 250, y = 400)
-    solutionBtn = Button(window, text = "Give me the Solution", command = showSolution)
+    solutionBtn = Button(window, text = "Give me the solution", command = showSolution)
     solutionBtn.place(x = 250, y = 440)
     skipBtn = Button(window, text = "Skip Question", command = system)
     skipBtn.place(x = 700, y = 470)
@@ -536,17 +525,10 @@ def system():
 
     x = (e * c - b * f) / (a * e - b * d)
     y = (d * c - a * f) / (b * d - a * e)
+    x = round(x, 3)
+    y = round(y, 3)
     answer = str(x) + ", " + str(y)
     print(answer)
-
-def inequal():
-    print("hi")
-
-def graph():
-    print("hi")
-
-def best():
-    print("hi")
 
 def expon():
     screenNum = 9
@@ -571,16 +553,16 @@ def expon():
     
     def hint():
         if (screenNum == 9):
-            hintText = Text(window, height = 2, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
+            hintText = Text(window, height = 3, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
             hintText.place(x = 250, y = 150)
             hintText.delete(1.0, "end")
-            hintText.insert(1.0, "If you have to multiply, add the exponents, if you have to divide, subtract the exponents."+
-                                 "\nIf you have the power to the power, multiply the exponents")
+            hintText.insert(1.0, "If you have to multiply, add the exponents, if you have to\ndivide, subtract the exponents."+
+                                 "If you have the power to the \npower, multiply the exponents")
 
     def showSolution():
         if (screenNum == 9):
             solutionText = Text(window, height = 1, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
-            solutionText.place(x = 250, y = 190)
+            solutionText.place(x = 250, y = 220)
             solutionText.delete(1.0, "end")
             solutionText.insert(1.0, "The solution is " + answer)
 
@@ -634,7 +616,6 @@ def expon():
     solutionBtn.place(x = 250, y = 440)
 
 def seq():
-    screenNum = 10
     def search():
         userInput = entry.get()
         if (int(userInput) == commonChange):
@@ -655,25 +636,23 @@ def seq():
             hint()
     
     def hint():
-        if (screenNum == 10):
-            hintText = Text(window, height = 2, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
-            hintText.place(x = 250, y = 150)
-            hintText.delete(1.0, "end")
-            hintText.insert(1.0, "First, figure out if the sequence is geometric or arithmetic. If it's geometric, the numbers will multiply by a common number."+
-                                 "\nIf the sequence is arithmetic, it will grow by adding the same number")
+        hintText = Text(window, height = 5, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
+        hintText.place(x = 250, y = 130)
+        hintText.delete(1.0, "end")
+        hintText.insert(1.0, "First, figure out if the sequence is geometric or arithmetic. If \nit's geometric, the numbers will multiply by a common number."+
+                                "\nIf the sequence is arithmetic, it will grow by adding the \nsame number")
 
     def showSolution():
-        if (screenNum == 10):
-            solutionText = Text(window, height = 1, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
-            solutionText.place(x = 250, y = 190)
-            solutionText.delete(1.0, "end")
-            solutionText.insert(1.0, "The solution is " + str(commonChange))
+        solutionText = Text(window, height = 1, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
+        solutionText.place(x = 250, y = 225)
+        solutionText.delete(1.0, "end")
+        solutionText.insert(1.0, "The solution is " + str(commonChange))
 
     blankText = Text(window, height = 400, background = '#dadde3', borderwidth = 0, font = ("Helvetica", 20))
     blankText.place(x = 235, y = 0)
 
-    sectionTitleText = Text(window, height = 1, width = 8, background='#dadde3', borderwidth = 0, font = ("Helvetica", 20))
-    sectionTitleText.place(x = 250,y = 20)
+    sectionTitleText = Text(window, height = 1, background='#dadde3', borderwidth = 0, font = ("Helvetica", 20))
+    sectionTitleText.place(x = 250, y = 20)
 
     entry = Entry(window)
     entry.place(x = 550, y = 445)
@@ -681,12 +660,12 @@ def seq():
     submitBtn.place(x = 700, y = 440)
 
     sectionTitleText.delete(1.0, "end")
-    sectionTitleText.insert(1.0, "Sequence Practice")
+    sectionTitleText.insert(1.0, "Sequences")
     problemText = Text(window, height = 3, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 12))
     problemText.place(x = 250, y = 60)
     problemText.delete(1.0, "end")
-    problemText.insert(1.0, "You will be given a set of three numbers. If the sequence is geometric, provide the common ratio." +
-                            "\nIf the sequence is arithmetic provide the common difference. Your sequence is:"+
+    problemText.insert(1.0, "You will be given a set of three numbers. If the sequence is geometric, provide \nthe common ratio." +
+                            "If the sequence is arithmetic provide the common difference. \nYour sequence is:"+
                             "\n")
 
     hintBtn = Button(window, text = "Give me a hint", command = hint)
@@ -705,7 +684,7 @@ def seq():
         question = str(firstTerm) + ", " + str((firstTerm*commonChange)) + ", " + str((firstTerm*commonChange*commonChange))
         print(commonChange)
 
-    problemText.insert(3.0, question)
+    problemText.insert(5.0, question)
 
     solutionBtn = Button(window, text = "Give me the solution", command = showSolution)
     solutionBtn.place(x = 250, y = 440)
@@ -731,25 +710,6 @@ def about():
                                 "\n3. If you are unable to solve it or just need a nudge in the right direction, just click the hint button" +
                                 "\n4. Enjoy learning and improving up on your math skills!")
 
-def english():
-    print("hi")
-
-def spanish():
-    print("hi")
-
-def chinese():
-    print("hi")
-
-def viet():
-    print("hi")
-
-def arabic():
-    print("hi")
-
-def russian():
-    print("hi")
-
-  
 
 
 window = Tk()
@@ -774,45 +734,36 @@ solvingBtn.place(x = 25, y = 195)
 systemBtn = Button(window, text="System of Equations", command=system)
 systemBtn.place(x = 25, y = 231)
 
-inequalBtn = Button(window, text="Inequalities", command=inequal)
-inequalBtn.place(x = 25, y = 268)
-
-graphBtn = Button(window, text="Find the Equation of a Graph", command=graph)
-graphBtn.place(x = 25, y = 304)
-
 exponBtn = Button(window, text="Exponents", command=expon)
-exponBtn.place(x = 25, y = 340)
+exponBtn.place(x = 25, y = 268)
 
 seqBtn = Button(window, text="Sequences", command=seq)
-seqBtn.place(x = 25, y = 377)
+seqBtn.place(x = 25, y = 304)
 
 aboutBtn = Button(window, text="About", command=about)
 aboutBtn.place(x = 25, y = 450)
 
 
-englishBtn = Button(window, text="English", command=english)
-#englishBtn.place(x = 503, y = 475)
-
-spanishBtn = Button(window, text="Español", command=spanish)
-#spanishBtn.place(x = 553, y = 475)
-
-chineseBtn = Button(window, text="中文", command=chinese)
-#chineseBtn.place(x = 605, y = 475)
-
-vietBtn = Button(window, text="Việt Nam", command=viet)
-#vietBtn.place(x = 640, y = 475)
-
-arabicBtn = Button(window, text="العربية", command=arabic)
-#arabicBtn.place(x = 700, y = 475)
-
-russianBtn = Button(window, text="русский", command=russian)
-#russianBtn.place(x = 745, y = 475)
-
-
 separator = ttk.Separator(window, orient='vertical')
 separator.place(relx=0.29, rely=0, relwidth=0.001, relheight=1)
 
-
+blankText = Text(window, height = 40, background='#dadde3', borderwidth=0, font = ("Helvetica", 20))
+blankText.place(x=235,y=0)
+sectionTitleText = Text(window, height = 15, width = 61, background='#dadde3', borderwidth = 0, font = ("Helvetica", 12))
+sectionTitleText.place(x = 240, y = 25)
+sectionTitleText.delete(1.0, "end")
+sectionTitleText.insert(1.0, "About AlgeBRO:"+
+                            "\n " +
+                            "\nOur programs goals are to tutor students in the subject of Algebra. We offer a " + 
+                            "\nvariety of questions surrounding key ideas like solving equations, graphs, and " + 
+                            "\nmultiple functions and allow students to get tips if they got an answer wrong. " + 
+                            "\n " +
+                            "\nHow To Use AlgeBRO:" +
+                            "\n " +
+                            "\n1. Select the skill you want to practice on the side bar menu" +
+                            "\n2. Attempt to solve the problems given." +
+                            "\n3. If you are unable to solve it or just need a nudge in the right direction, just click the hint button" +
+                            "\n4. Enjoy learning and improving up on your math skills!")
 
 
 window.mainloop()
