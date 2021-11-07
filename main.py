@@ -214,7 +214,80 @@ def quad():
     solutionBtn.place(x = 250, y = 440)
 
 def square():
-    print("hi")
+    screenNum = 3
+    def search():
+        userInput = entry.get()
+        if (userInput == answer):
+            print("yay")
+            blankText = Text(window, height = 40, background='#dadde3', borderwidth=0, font = ("Helvetica", 20))
+            blankText.place(x=235,y=0)
+            congratsText = Text(window, height = 1, background = '#dadde3', borderwidth=0, font = ("Helvetica", 20))
+            congratsText.place(x = 250, y = 25)
+            congratsText.delete(1.0, "end")
+            congratsText.insert(1.0, "CONGRATS! You Got the Right Answer!")
+            secondText = Text(window, height = 1, background='#dadde3', borderwidth=0, font = ("Helvetica", 15))
+            secondText.place(x = 250, y = 70)
+            secondText.delete(1.0, "end")
+            secondText.insert(1.0, "Click the button below to go to the next question!")
+            continueBtn = Button(window, text="Next Question", command = quad)
+            continueBtn.place(x = 450, y = 200)
+        else:
+            hint()
+
+    def hint():
+        if (screenNum == 3):
+            hintText = Text(window, height = 2, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
+            hintText.place(x = 250, y = 150)
+            hintText.delete(1.0, "end")
+            hintText.insert(2.0, "Hint: add (b/2)^2 to both sides (right side is 0), factor the left side, subtract the "+
+                                 "\nright side from both sides.")
+
+    def showSolution():
+        if (screenNum == 3):
+            solutionText = Text(window, height = 1, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
+            solutionText.place(x = 250, y = 190)
+            solutionText.delete(1.0, "end")
+            solutionText.insert(1.0, "The solution is " + answer)
+
+    blankText = Text(window, height = 400, background = '#dadde3', borderwidth = 0, font = ("Helvetica", 20))
+    blankText.place(x = 235, y = 0)
+
+    sectionTitleText = Text(window, height = 1, width = 8, background='#dadde3', borderwidth = 0, font = ("Helvetica", 20))
+    sectionTitleText.place(x = 250,y = 20)
+
+    entry = Entry(window)
+    entry.place(x = 550, y = 445)
+    submitBtn = Button(window, text = "Submit", command = search)
+    submitBtn.place(x = 700, y = 440)
+    skipBtn = Button(window, text = "Skip Question", command = quad)
+    skipBtn.place(x = 700, y = 470)
+
+    sectionTitleText.delete(1.0, "end")
+    sectionTitleText.insert(1.0, "Completing the Square")
+    problemText = Text(window, height = 4, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 12))
+    problemText.place(x = 250, y = 60)
+    problemText.delete(1.0, "end")
+    problemText.insert(1.0, "Complete the square of the equation, rounding your answer to the nearest three " + 
+                            "\ndecimal points. If your answer has an integer, type .0 after the integer. If your "+
+                            "\nanswer is a terminating decimal, enter your answer until the decimal terminates." +
+                            "\nEnter the higher solution first. Equation: ")
+
+    hintBtn = Button(window, text = "Give me a hint", command = hint)
+    hintBtn.place(x = 250, y = 400)
+
+    a = 1
+    b = (random.randint(1, 5))*2
+    c = random.randint(1, 10)
+
+    question = "x^2 + " + str(b) + "x + " + str(c)
+
+    answer = "(x+" + str(b/2) + ")^2-" + str(c+((b/2)*(b/2)))
+    print(answer)
+
+    problemText.insert(5.0, question)
+
+    solutionBtn = Button(window, text = "Give me the solution", command = showSolution)
+    solutionBtn.place(x = 250, y = 440)
 
 def solving():
     def hint():
