@@ -63,6 +63,8 @@ def factor():
     explainText.insert(1.0, "Enter your answer in form (ax+b)(cx+d) or use '-' if b or d is negative")
     hintBtn = Button(window, text = "Give me a hint", command = hint)
     hintBtn.place(x = 250, y = 400)
+    skipBtn = Button(window, text = "Skip Question", command = factor)
+    skipBtn.place(x = 700, y = 470)
     answer = "("
 
     firstNum = random.randint(1, 10)
@@ -168,16 +170,18 @@ def quad():
     entry.place(x = 550, y = 445)
     submitBtn = Button(window, text = "Submit", command = search)
     submitBtn.place(x = 700, y = 440)
+    skipBtn = Button(window, text = "Skip Question", command = quad)
+    skipBtn.place(x = 700, y = 470)
 
     sectionTitleText.delete(1.0, "end")
     sectionTitleText.insert(1.0, "Quadratic Formula")
     problemText = Text(window, height = 4, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 12))
     problemText.place(x = 250, y = 60)
     problemText.delete(1.0, "end")
-    problemText.insert(1.0, "Find the solutions to the equation, rounding your answer to the nearest three decimal points." + 
-                            "\nIf your answer is an integer, type .0 after the integer. If you answer is a terminating decimal,"+
-                            "\nenter your answer until the decimal terminates. Enter the higher solution first. Equation:" +
-                            "\n")
+    problemText.insert(1.0, "Find the solutions to the equation, rounding your answer to the nearest three " + 
+                            "\ndecimal points. If your answer is an integer, type .0 after the integer. If your "+
+                            "\nanswer is a terminating decimal, enter your answer until the decimal terminates." +
+                            "\nEnter the higher solution first. Equation: ")
 
     hintBtn = Button(window, text = "Give me a hint", command = hint)
     hintBtn.place(x = 250, y = 400)
@@ -200,7 +204,7 @@ def quad():
     else:
         question = str(a) + "x^2 + " + str(b) + "x + " + str(c)
 
-    problemText.insert(4.0, question)
+    problemText.insert(6.0, question)
 
     answerPlus = round(((-b + math.sqrt(b*b - 4*a*c))/(2*a)), 3)
     answerMinus = round(((-b - math.sqrt(b*b - 4*a*c))/(2*a)), 3)
@@ -213,7 +217,116 @@ def square():
     print("hi")
 
 def solving():
-    print("hi")
+    def hint():
+            hintText = Text(window, height = 1, background = '#dadde3', borderwidth=0, font= ("Helvetica", 15))
+            hintText.place(x = 250, y = 150)
+            hintText.delete(1.0, "end")
+            hintText.insert(1.0, "Hint: Get all x's to one side and then divide")
+        
+    def search():
+        userInput = entry.get()
+        print(userInput)
+        print(answer)
+        if (str(userInput) == str(answer)):
+            print("yay")
+            blankText = Text(window, height = 40, background='#dadde3', borderwidth=0, font = ("Helvetica", 20))
+            blankText.place(x=235,y=0)
+            congratsText = Text(window, height = 1, background = '#dadde3', borderwidth=0, font = ("Helvetica", 20))
+            congratsText.place(x = 250, y = 25)
+            congratsText.delete(1.0, "end")
+            congratsText.insert(1.0, "CONGRATS! You Got the Right Answer!")
+            secondText = Text(window, height = 1, background='#dadde3', borderwidth=0, font = ("Helvetica", 15))
+            secondText.place(x = 250, y = 70)
+            secondText.delete(1.0, "end")
+            secondText.insert(1.0, "Click the button below to go to the next question!")
+            continueBtn = Button(window, text="Next Question", command = solving)
+            continueBtn.place(x = 450, y = 200)
+        else:
+            hint()
+
+    def showSolution():
+        solutionText = Text(window, height = 1, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 15))
+        solutionText.place(x = 250, y = 190)
+        solutionText.delete(1.0, "end")
+        solutionText.insert(1.0, "The solution is " + str(answer))
+
+    blankText = Text(window, height = 40, background='#dadde3', borderwidth=0, font = ("Helvetica", 20))
+    blankText.place(x=235,y=0)
+    sectionTitleText = Text(window, height = 1, background='#dadde3', borderwidth = 0, font = ("Helvetica", 20))
+    sectionTitleText.place(x=250,y=20)
+    entry = Entry(window)
+    entry.place(x = 550, y = 445)
+    submitBtn = Button(window, text="Submit", command = search)
+    submitBtn.place(x = 700, y = 440)
+    sectionTitleText.delete(1.0, "end")
+    sectionTitleText.insert(1.0, "Solving Single Variable Equations")
+    problemText = Text(window, height = 1,  background='#dadde3', borderwidth = 0, font = ("Helvetica", 12))
+    problemText.place(x = 250, y = 60)
+    problemText.delete(1.0, "end")
+    problemText.insert(1.0, "Solve for the value of x in this Equation: ")
+    explainText = Text(window, height = 1, background = '#dadde3', borderwidth = 0, font = ("Helvetica", 10))
+    explainText.place(x = 250, y = 90)
+    explainText.delete(1.0, "end")
+    explainText.insert(1.0, "Enter your answer to a maximum of three digits")
+    hintBtn = Button(window, text = "Give me a hint", command = hint)
+    hintBtn.place(x = 250, y = 400)
+    solutionBtn = Button(window, text = "Give me the Solution", command = showSolution)
+    solutionBtn.place(x = 250, y = 440)
+    skipBtn = Button(window, text = "Skip Question", command = solving)
+    skipBtn.place(x = 700, y = 470)
+
+    if (random.randint(0,1) == 1):
+        a = random.randint(-10, -1)
+    else:
+        a = random.randint(1, 10)
+    if (random.randint(0,1) == 1):
+        b = random.randint(-10, -1)
+    else:
+        b = random.randint(-10, -1)
+    if (random.randint(0,1) == 1):
+        c = random.randint(-10, -1)
+    else:
+        c = random.randint(1, 10)
+    if (random.randint(0,1) == 1):
+        d = random.randint(-10, -1)
+    else:
+        d = random.randint(1, 10)
+
+    while(a == c or b == d):
+        if (random.randint(0,1) == 1):
+            a = random.randint(-10, -1)
+        else:
+            a = random.randint(1, 10)
+        if (random.randint(0,1) == 1):
+            b = random.randint(-10, -1)
+        else:
+            b = random.randint(-10, -1)
+        if (random.randint(0,1) == 1):
+            c = random.randint(-10, -1)
+        else:
+            c = random.randint(1, 10)
+        if (random.randint(0,1) == 1):
+            d = random.randint(-10, -1)
+        else:
+            d = random.randint(1, 10)
+
+    question = str(a) + "x "
+    if (b < 0):
+        question = question + "- " + str(abs(b)) + " = " + str(c) + "x "
+    else:
+        question = question + "+ " + str(b) + " = " + str(c) + "x "
+    
+    if (d < 0):
+        question = question + "- " + str(abs(d))
+    else:
+        question = question + "+ " + str(d)
+
+    print(question)
+    answer = (d - b) / (a - c)
+    answer = round(answer, 3)
+    print(answer)
+
+    problemText.insert(6.0, question)
 
 def system():
     print("hi")
@@ -279,9 +392,9 @@ def expon():
     problemText = Text(window, height = 4, background = "#dadde3", borderwidth = 0, font = ("Helvetica", 12))
     problemText.place(x = 250, y = 60)
     problemText.delete(1.0, "end")
-    problemText.insert(1.0, "You will be given either a multiplication of exponents with the same base, division of exponents" +
-                            "\nwith the same base, or a power to a power. Your task is to solve it and show the equation in the" +
-                            "\nsimplest form your equation is: "+
+    problemText.insert(1.0, "You will be given either a multiplication of exponents with the same base, " +
+                            "\ndivision of exponents with the same base, or a power to a power. Your task " +
+                            "\nis to solve it and show the equation in the simplest form your equation is: "+
                             "\n")
 
     hintBtn = Button(window, text = "Give me a hint", command = hint)
@@ -385,14 +498,11 @@ inequalBtn.place(x = 25, y = 268)
 graphBtn = Button(window, text="Find the Equation of a Graph", command=graph)
 graphBtn.place(x = 25, y = 304)
 
-bestBtn = Button(window, text="Line of Best Fit", command=best)
-bestBtn.place(x = 25, y = 340)
-
 exponBtn = Button(window, text="Exponents", command=expon)
-exponBtn.place(x = 25, y = 377)
+exponBtn.place(x = 25, y = 340)
 
 seqBtn = Button(window, text="Sequences", command=seq)
-seqBtn.place(x = 25, y = 413)
+seqBtn.place(x = 25, y = 377)
 
 aboutBtn = Button(window, text="About", command=about)
 aboutBtn.place(x = 25, y = 450)
